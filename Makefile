@@ -1,15 +1,15 @@
 USERNAME=camerondurham
-XMR_BASIC_REPO=xmr-basic
-TAG=v0
+XMR_BASIC_REPO=xmr
+TAG=alpine-3.14.2
 XMR_BASIC_NAME=$(USERNAME)/$(XMR_BASIC_REPO):$(TAG)
 
-xmr-basic:
-	docker build -t $(XMR_BASIC_NAME) -f ./xmr-basic/Dockerfile ./xmr-basic
+xmr:
+	docker build -t $(XMR_BASIC_NAME) -f ./xmr/Dockerfile ./xmr
 
-push-xmr-basic: xmr-basic
+push-xmr: xmr
 	docker push $(XMR_BASIC_NAME)
 
-exec-xmr-basic: xmr-basic
+exec-xmr: xmr
 	docker run -it $(XMR_BASIC_NAME) /bin/sh
 
-.PHONY: xmr-basic push-xmr-basic exec-xmr-basic
+.PHONY: xmr push-xmr exec-xmr
