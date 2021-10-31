@@ -12,7 +12,7 @@ xmr-arm:
 	docker buildx build -t $(XMR_ARM_NAME) --platform linux/arm/v7 -f ./xmr/Dockerfile.multiarch ./xmr
 
 xmr-multiarch:
-	docker buildx build -t $(XMR_NAME) --platform linux/amd64,linux/arm64,linux/arm/v7 -f ./xmr/Dockerfile.multiarch --push ./xmr
+	docker buildx build -t $(XMR_NAME) --platform linux/amd64,linux/arm/v7 -f ./xmr/Dockerfile.multiarch --push ./xmr
 
 
 push-xmr: xmr
